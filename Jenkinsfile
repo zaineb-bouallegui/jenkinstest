@@ -2,10 +2,11 @@ pipeline {
     agent any // Spécifie l'agent sur lequel le pipeline sera exécuté (n'importe quel agent disponible).
 
     stages {
-        stage('Clean Maven Cache') {
+      stage('Clean Maven Cache') {
     steps {
         sh 'mvn clean'
     }
+}
         stage('Checkout') {
             steps {
                 // Étape pour récupérer le code source du référentiel Git
