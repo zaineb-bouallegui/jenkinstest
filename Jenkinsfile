@@ -1,10 +1,11 @@
 pipeline {
     agent any
+
     stages {
-        stage('Récupération du code source depuis Git') {
+        stage('Récupération du code source') {
             steps {
-                // Récupérer le code source depuis Git
-                checkout scm
+                // Récupérer le code source depuis le référentiel Git
+                git 'https://github.com/votre-utilisateur/votre-projet.git'
             }
         }
         stage('Affichage de la date système') {
@@ -14,14 +15,13 @@ pipeline {
             }
         }
     }
+
     post {
         success {
-            // Actions à effectuer en cas de succès
-            echo 'Le pipeline a réussi!'
+            echo 'Pipeline succeeded!'
         }
         failure {
-            // Actions à effectuer en cas d'échec
-            echo 'Le pipeline a échoué!'
+            echo 'Pipeline failed!'
         }
     }
 }
