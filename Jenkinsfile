@@ -1,33 +1,25 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone') {
+        stage('Récupération du code source depuis Git') {
             steps {
+                // Récupérer le code source depuis Git
                 checkout scm
             }
         }
-
-        stage('Build') {
+        stage('Affichage de la date système') {
             steps {
-                sh 'mvn clean package'  // Utilisez cette étape pour construire votre projet Maven (remarquez que j'ai utilisé "mvn clean package" au lieu de "javac Main.java")
-            }
-        }
-
-        stage('Run') {
-            steps {
-                sh 'java -jar target/gestion-station-ski-1.0.jar'  // Remplacez "votre-jar.jar" par le nom réel de votre fichier JAR généré
+                // Afficher la date système
+                sh 'date'
             }
         }
     }
-
     post {
         success {
-            echo 'Le pipeline a réussi !'
+            // Actions à effectuer en cas de succès
         }
-
         failure {
-            echo 'Le pipeline a échoué.'
+            // Actions à effectuer en cas d'échec
         }
     }
 }
