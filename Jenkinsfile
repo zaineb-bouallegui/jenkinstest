@@ -1,23 +1,27 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage('Récupération du code source depuis Git') {
             steps {
-                // Define your build steps here
-                sh 'echo "Building..."'
+                // Récupérer le code source depuis Git
+                checkout scm
+            }
+        }
+        stage('Affichage de la date système') {
+            steps {
+                // Afficher la date système
+                sh 'date'
             }
         }
     }
-
     post {
         success {
-            // Define steps for success (e.g., notifications or additional actions)
-            echo 'Pipeline succeeded!'
+            // Actions à effectuer en cas de succès
+            echo 'Le pipeline a réussi!'
         }
         failure {
-            // Define steps for failure (e.g., notifications or cleanup)
-            echo 'Pipeline failed!'
+            // Actions à effectuer en cas d'échec
+            echo 'Le pipeline a échoué!'
         }
     }
 }
