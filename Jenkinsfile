@@ -12,16 +12,12 @@ pipeline {
 
     post {
         success {
-            steps {
-                // Define steps for success
-                sh 'echo "Pipeline succeeded!"'
-            }
+            // Define steps for success (e.g., notifications or additional actions)
+            echo 'Pipeline succeeded!'
         }
         failure {
-            steps {
-                // Define steps for failure
-                sh 'echo "Pipeline failed!"'
-            }
+            // Define steps for failure (e.g., notifications or cleanup)
+            echo 'Pipeline failed!'
         }
     }
 }
